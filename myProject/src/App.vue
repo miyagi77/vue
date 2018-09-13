@@ -6,10 +6,10 @@
         <div class="navLeft"><img src="../src/assets/logo.png" class="navImg"></div>
         <div class="navRight" >
           <ul >
-            <li  v-for="(item,index) in list">
-              <a  @click="active(index)" :class="{active:index==ins}"  data-toggle="dropdown" aria-haspopup="true"  :id="index">{{item.name}}</a>
+            <li  v-for="(item,index) in list"  :key="index">
+              <router-link  @click="active(index)" :class="{active:index==ins}"  data-toggle="dropdown" aria-haspopup="true"  :id="index" :to="item.link">{{item.name}}</router-link>
               <ul  v-if="item.child" class="dropdown-menu" :aria-labelledby="index" v-bind:style="{'left': item.style}">
-                <li  v-for="(items,index) in item.child" ><a>{{items.name}}</a></li>
+                <li  v-for="(items,index) in item.child" ><router-link :to="items.link">{{items.name}}</router-link></li>
               </ul>
             </li>
           </ul>
@@ -37,37 +37,61 @@ export default {
       ins: 0,
       shows: 1,
       list: [
-        { name: "首页" },
+        { name: "首页", link: "/" },
         {
           name: "列表2",
-          child: [{ name: "Action2" }, { name: "Action action" }]
+          child: [
+            { name: "Action2", link: "/main" },
+            { name: "Action action", link: "/hello" }
+          ],
+          link: "/hello"
         },
         {
           name: "列表3",
-          child: [{ name: "Action3" }, { name: "Action action" }],
-          style: "17.3%"
+          child: [
+            { name: "Action3", link: "/hello" },
+            { name: "Action action", link: "/hello" }
+          ],
+          style: "17.3%",
+          link: "/hello"
         },
         {
           name: "列表4",
-          child: [{ name: "Action4" }, { name: "Action action" }],
-          style: "21.42%"
+          child: [
+            { name: "Action4", link: "/hello" },
+            { name: "Action action", link: "/hello" }
+          ],
+          style: "21.42%",
+          link: "/hello"
         },
         {
           name: "列表5",
-          child: [{ name: "Action5" }, { name: "Action action" }],
-          style: "25.57%"
+          child: [
+            { name: "Action5", link: "/hello" },
+            { name: "Action action", link: "/hello" }
+          ],
+          style: "25.57%",
+          link: "/hello"
         },
         {
           name: "列表6",
-          child: [{ name: "Action6" }, { name: "Action action" }],
-          style: "29.73%"
+          child: [
+            { name: "Action6", link: "/hello" },
+            { name: "Action action", link: "/hello" }
+          ],
+          style: "29.73%",
+          link: "/hello"
         },
         {
           name: "列表7",
-          child: [{ name: "Action7" }, { name: "Action action" }],
-          style: "33.9%"
+          child: [
+            { name: "Action7", link: "/hello" },
+            { name: "Action action", link: "/hello" }
+          ],
+          style: "33.9%",
+          link: "/hello"
         },
-        { name: "列表8" }
+        { name: "列表8", link: "/hello" }
       ]
     };
   },
@@ -185,7 +209,7 @@ body {
   width: 100%;
   padding: 5px 10px;
 }
-.navLogin{
-width: 8%;
+.navLogin {
+  width: 8%;
 }
 </style>

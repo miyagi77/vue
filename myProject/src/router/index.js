@@ -3,13 +3,19 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import main from '@/components/main'
 import title1 from '@/components/title1'
+import index from '@/components/index'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path:'/',
+      name:"index",
+      component:index
+    },
+    {
+      path: '/hello',
       name: 'HelloWorld',
       component: HelloWorld
     },{
