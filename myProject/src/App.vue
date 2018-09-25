@@ -2,7 +2,7 @@
   <div id="app">
     <!-- 标题栏 -->
     <div>
-      <div class="nav">
+      <div class="nav" style="z-index: 1;">
         <div class="navLeft"><img src="../src/assets/logo.png" class="navImg"></div>
         <div class="navRight" >
           <ul >
@@ -34,7 +34,7 @@ export default {
   name: "App",
   data() {
     return {
-      ins: 0,
+      
       shows: 1,
       list: [
         { name: "首页", link: "/" },
@@ -99,8 +99,17 @@ export default {
     active: function(num) {
       this.ins = num;
     }
+    
+  }, 
+  mounted(){
+    console.log(this.$route)
+    var path = this.$route.path
+    if(this.$route.path != path){
+       location.reload() 
+    }
   }
 };
+
 </script>
 <style>
 html,
